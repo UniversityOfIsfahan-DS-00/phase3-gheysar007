@@ -56,28 +56,6 @@ namespace Calculator
                 size++;
             }
 
-            //public void AddLast(char e)
-            //{
-            //    if (size == 0)
-            //    {
-            //        AddFirst(e);
-            //    }
-            //    else
-            //    {
-            //        node search = head;
-            //        while (search.getNext() != null)
-            //        {
-            //            search = search.getNext();
-            //        }
-            //        node newnode = new node(e, null);
-            //        tail.setNext(newnode);
-            //        tail = newnode;
-            //        size++;
-
-            //    }
-
-            //}
-
             public char RemoveFirst()
             {
                 node temp = head;

@@ -34,11 +34,9 @@ namespace Calculator
             this.standardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scientificToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.temperatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.txtDisplay = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
-            this.BackSpace = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -54,18 +52,16 @@ namespace Calculator
             this.button8 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button21 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.button25 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
             this.button36 = new System.Windows.Forms.Button();
-            this.button37 = new System.Windows.Forms.Button();
-            this.button38 = new System.Windows.Forms.Button();
+            this.btnParclose = new System.Windows.Forms.Button();
+            this.btnParopen = new System.Windows.Forms.Button();
             this.button39 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
-            this.lblShowOp = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -77,8 +73,17 @@ namespace Calculator
             this.rbCeltoFah = new System.Windows.Forms.RadioButton();
             this.button24 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.lblShowOp = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtDisplay = new System.Windows.Forms.TextBox();
+            this.button37 = new System.Windows.Forms.Button();
+            this.BackSpace = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -90,7 +95,7 @@ namespace Calculator
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(833, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1100, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -129,25 +134,13 @@ namespace Calculator
             this.temperatureToolStripMenuItem.Text = "Temperature";
             this.temperatureToolStripMenuItem.Click += new System.EventHandler(this.temperatureToolStripMenuItem_Click);
             // 
-            // txtDisplay
-            // 
-            this.txtDisplay.BackColor = System.Drawing.Color.DarkSalmon;
-            this.txtDisplay.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisplay.Location = new System.Drawing.Point(12, 36);
-            this.txtDisplay.Multiline = true;
-            this.txtDisplay.Name = "txtDisplay";
-            this.txtDisplay.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtDisplay.Size = new System.Drawing.Size(448, 41);
-            this.txtDisplay.TabIndex = 2;
-            this.txtDisplay.Text = "0";
-            // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Coral;
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(85, 83);
+            this.button2.Location = new System.Drawing.Point(85, 96);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(67, 63);
             this.button2.TabIndex = 1;
@@ -161,7 +154,7 @@ namespace Calculator
             this.button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button.Location = new System.Drawing.Point(158, 83);
+            this.button.Location = new System.Drawing.Point(12, 96);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(67, 63);
             this.button.TabIndex = 1;
@@ -176,7 +169,7 @@ namespace Calculator
             this.button20.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button20.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.Location = new System.Drawing.Point(231, 359);
+            this.button20.Location = new System.Drawing.Point(231, 372);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(67, 63);
             this.button20.TabIndex = 1;
@@ -184,28 +177,13 @@ namespace Calculator
             this.button20.UseVisualStyleBackColor = false;
             this.button20.Click += new System.EventHandler(this.arithmetic_op);
             // 
-            // BackSpace
-            // 
-            this.BackSpace.BackColor = System.Drawing.Color.Coral;
-            this.BackSpace.BackgroundImage = global::Calculator.Properties.Resources.backspace__1_;
-            this.BackSpace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.BackSpace.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BackSpace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackSpace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackSpace.Location = new System.Drawing.Point(12, 83);
-            this.BackSpace.Name = "BackSpace";
-            this.BackSpace.Size = new System.Drawing.Size(67, 63);
-            this.BackSpace.TabIndex = 1;
-            this.BackSpace.UseVisualStyleBackColor = false;
-            this.BackSpace.Click += new System.EventHandler(this.buttonback_Click);
-            // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Coral;
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(12, 152);
+            this.button3.Location = new System.Drawing.Point(12, 165);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(67, 63);
             this.button3.TabIndex = 1;
@@ -219,7 +197,7 @@ namespace Calculator
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(12, 290);
+            this.button5.Location = new System.Drawing.Point(12, 303);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(67, 63);
             this.button5.TabIndex = 1;
@@ -233,7 +211,7 @@ namespace Calculator
             this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(12, 221);
+            this.button9.Location = new System.Drawing.Point(12, 234);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(67, 63);
             this.button9.TabIndex = 1;
@@ -247,7 +225,7 @@ namespace Calculator
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(85, 152);
+            this.button6.Location = new System.Drawing.Point(85, 165);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(67, 63);
             this.button6.TabIndex = 1;
@@ -261,7 +239,7 @@ namespace Calculator
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(85, 221);
+            this.button7.Location = new System.Drawing.Point(85, 234);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(67, 63);
             this.button7.TabIndex = 1;
@@ -275,7 +253,7 @@ namespace Calculator
             this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(85, 290);
+            this.button10.Location = new System.Drawing.Point(85, 303);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(67, 63);
             this.button10.TabIndex = 1;
@@ -289,7 +267,7 @@ namespace Calculator
             this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(158, 152);
+            this.button11.Location = new System.Drawing.Point(158, 165);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(67, 63);
             this.button11.TabIndex = 1;
@@ -303,7 +281,7 @@ namespace Calculator
             this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(158, 221);
+            this.button13.Location = new System.Drawing.Point(158, 234);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(67, 63);
             this.button13.TabIndex = 1;
@@ -317,7 +295,7 @@ namespace Calculator
             this.button14.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button14.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(158, 290);
+            this.button14.Location = new System.Drawing.Point(158, 303);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(67, 63);
             this.button14.TabIndex = 1;
@@ -331,7 +309,7 @@ namespace Calculator
             this.button15.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button15.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(12, 359);
+            this.button15.Location = new System.Drawing.Point(12, 372);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(67, 63);
             this.button15.TabIndex = 1;
@@ -345,7 +323,7 @@ namespace Calculator
             this.button17.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button17.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(85, 359);
+            this.button17.Location = new System.Drawing.Point(85, 372);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(67, 63);
             this.button17.TabIndex = 1;
@@ -359,7 +337,7 @@ namespace Calculator
             this.button18.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button18.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(158, 359);
+            this.button18.Location = new System.Drawing.Point(158, 372);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(67, 63);
             this.button18.TabIndex = 1;
@@ -374,7 +352,7 @@ namespace Calculator
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(231, 290);
+            this.button8.Location = new System.Drawing.Point(231, 303);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(67, 63);
             this.button8.TabIndex = 1;
@@ -389,7 +367,7 @@ namespace Calculator
             this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Tahoma", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(231, 221);
+            this.button12.Location = new System.Drawing.Point(231, 234);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(67, 63);
             this.button12.TabIndex = 1;
@@ -404,7 +382,7 @@ namespace Calculator
             this.button16.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button16.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(231, 152);
+            this.button16.Location = new System.Drawing.Point(231, 165);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(67, 63);
             this.button16.TabIndex = 1;
@@ -412,28 +390,13 @@ namespace Calculator
             this.button16.UseVisualStyleBackColor = false;
             this.button16.Click += new System.EventHandler(this.arithmetic_op);
             // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.Coral;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(231, 83);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(67, 63);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "±";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button1_Click);
-            // 
             // button21
             // 
             this.button21.BackColor = System.Drawing.Color.Coral;
             this.button21.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button21.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.Location = new System.Drawing.Point(393, 83);
+            this.button21.Location = new System.Drawing.Point(76, 3);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(67, 63);
             this.button21.TabIndex = 1;
@@ -447,7 +410,7 @@ namespace Calculator
             this.button22.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button22.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.Location = new System.Drawing.Point(320, 152);
+            this.button22.Location = new System.Drawing.Point(3, 72);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(67, 63);
             this.button22.TabIndex = 1;
@@ -461,7 +424,7 @@ namespace Calculator
             this.button23.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button23.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.Location = new System.Drawing.Point(393, 152);
+            this.button23.Location = new System.Drawing.Point(76, 141);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(67, 63);
             this.button23.TabIndex = 1;
@@ -475,7 +438,7 @@ namespace Calculator
             this.button25.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button25.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.Location = new System.Drawing.Point(320, 221);
+            this.button25.Location = new System.Drawing.Point(3, 3);
             this.button25.Name = "button25";
             this.button25.Size = new System.Drawing.Size(67, 63);
             this.button25.TabIndex = 1;
@@ -489,7 +452,7 @@ namespace Calculator
             this.button34.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button34.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button34.Location = new System.Drawing.Point(393, 221);
+            this.button34.Location = new System.Drawing.Point(3, 141);
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(67, 63);
             this.button34.TabIndex = 1;
@@ -504,7 +467,7 @@ namespace Calculator
             this.button36.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button36.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button36.Location = new System.Drawing.Point(320, 359);
+            this.button36.Location = new System.Drawing.Point(3, 279);
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(67, 63);
             this.button36.TabIndex = 1;
@@ -512,33 +475,35 @@ namespace Calculator
             this.button36.UseVisualStyleBackColor = false;
             this.button36.Click += new System.EventHandler(this.button36_Click);
             // 
-            // button37
+            // btnParclose
             // 
-            this.button37.BackColor = System.Drawing.Color.Coral;
-            this.button37.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button37.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button37.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button37.Location = new System.Drawing.Point(393, 290);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(67, 63);
-            this.button37.TabIndex = 1;
-            this.button37.Text = ")";
-            this.button37.UseVisualStyleBackColor = false;
+            this.btnParclose.BackColor = System.Drawing.Color.Coral;
+            this.btnParclose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnParclose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnParclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnParclose.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnParclose.Location = new System.Drawing.Point(76, 210);
+            this.btnParclose.Name = "btnParclose";
+            this.btnParclose.Size = new System.Drawing.Size(67, 63);
+            this.btnParclose.TabIndex = 1;
+            this.btnParclose.Text = ")";
+            this.btnParclose.UseVisualStyleBackColor = false;
+            this.btnParclose.Click += new System.EventHandler(this.arithmetic_op);
             // 
-            // button38
+            // btnParopen
             // 
-            this.button38.BackColor = System.Drawing.Color.Coral;
-            this.button38.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button38.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button38.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button38.Location = new System.Drawing.Point(320, 290);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(67, 63);
-            this.button38.TabIndex = 1;
-            this.button38.Text = "(";
-            this.button38.UseVisualStyleBackColor = false;
+            this.btnParopen.BackColor = System.Drawing.Color.Coral;
+            this.btnParopen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnParopen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnParopen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnParopen.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnParopen.Location = new System.Drawing.Point(3, 210);
+            this.btnParopen.Name = "btnParopen";
+            this.btnParopen.Size = new System.Drawing.Size(67, 63);
+            this.btnParopen.TabIndex = 1;
+            this.btnParopen.Text = "(";
+            this.btnParopen.UseVisualStyleBackColor = false;
+            this.btnParopen.Click += new System.EventHandler(this.arithmetic_op);
             // 
             // button39
             // 
@@ -547,7 +512,7 @@ namespace Calculator
             this.button39.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button39.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button39.Location = new System.Drawing.Point(393, 359);
+            this.button39.Location = new System.Drawing.Point(76, 279);
             this.button39.Name = "button39";
             this.button39.Size = new System.Drawing.Size(67, 63);
             this.button39.TabIndex = 1;
@@ -561,21 +526,13 @@ namespace Calculator
             this.button19.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button19.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.Location = new System.Drawing.Point(320, 83);
+            this.button19.Location = new System.Drawing.Point(76, 72);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(67, 63);
             this.button19.TabIndex = 1;
             this.button19.Text = "𝜋";
             this.button19.UseVisualStyleBackColor = false;
             this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // lblShowOp
-            // 
-            this.lblShowOp.AutoSize = true;
-            this.lblShowOp.Location = new System.Drawing.Point(18, 39);
-            this.lblShowOp.Name = "lblShowOp";
-            this.lblShowOp.Size = new System.Drawing.Size(0, 13);
-            this.lblShowOp.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -590,9 +547,9 @@ namespace Calculator
             this.groupBox1.Controls.Add(this.button24);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(479, 36);
+            this.groupBox1.Location = new System.Drawing.Point(749, 36);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(344, 386);
+            this.groupBox1.Size = new System.Drawing.Size(344, 399);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Temperature";
@@ -691,7 +648,7 @@ namespace Calculator
             this.button24.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button24.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button24.Location = new System.Drawing.Point(263, 352);
+            this.button24.Location = new System.Drawing.Point(263, 362);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(75, 28);
             this.button24.TabIndex = 0;
@@ -705,7 +662,7 @@ namespace Calculator
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(7, 352);
+            this.button1.Location = new System.Drawing.Point(6, 362);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 28);
             this.button1.TabIndex = 0;
@@ -713,26 +670,106 @@ namespace Calculator
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // lblShowOp
+            // 
+            this.lblShowOp.AutoSize = true;
+            this.lblShowOp.Location = new System.Drawing.Point(3, 0);
+            this.lblShowOp.Name = "lblShowOp";
+            this.lblShowOp.Size = new System.Drawing.Size(0, 13);
+            this.lblShowOp.TabIndex = 3;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.DarkSalmon;
+            this.flowLayoutPanel1.Controls.Add(this.lblShowOp);
+            this.flowLayoutPanel1.Controls.Add(this.txtDisplay);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 36);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(448, 54);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // txtDisplay
+            // 
+            this.txtDisplay.BackColor = System.Drawing.Color.DarkSalmon;
+            this.txtDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDisplay.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDisplay.Location = new System.Drawing.Point(3, 16);
+            this.txtDisplay.Multiline = true;
+            this.txtDisplay.Name = "txtDisplay";
+            this.txtDisplay.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtDisplay.Size = new System.Drawing.Size(442, 28);
+            this.txtDisplay.TabIndex = 2;
+            this.txtDisplay.Text = "0";
+            // 
+            // button37
+            // 
+            this.button37.BackColor = System.Drawing.Color.Coral;
+            this.button37.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button37.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button37.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button37.Location = new System.Drawing.Point(393, 303);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(67, 63);
+            this.button37.TabIndex = 1;
+            this.button37.Text = ")";
+            this.button37.UseVisualStyleBackColor = false;
+            // 
+            // BackSpace
+            // 
+            this.BackSpace.BackColor = System.Drawing.Color.Coral;
+            this.BackSpace.BackgroundImage = global::Calculator.Properties.Resources.backspace__1_;
+            this.BackSpace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.BackSpace.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackSpace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackSpace.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackSpace.Location = new System.Drawing.Point(158, 96);
+            this.BackSpace.Name = "BackSpace";
+            this.BackSpace.Size = new System.Drawing.Size(140, 63);
+            this.BackSpace.TabIndex = 1;
+            this.BackSpace.UseVisualStyleBackColor = false;
+            this.BackSpace.Click += new System.EventHandler(this.buttonback_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(466, 36);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(277, 399);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Step by step solution";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.button25);
+            this.flowLayoutPanel2.Controls.Add(this.button21);
+            this.flowLayoutPanel2.Controls.Add(this.button22);
+            this.flowLayoutPanel2.Controls.Add(this.button19);
+            this.flowLayoutPanel2.Controls.Add(this.button34);
+            this.flowLayoutPanel2.Controls.Add(this.button23);
+            this.flowLayoutPanel2.Controls.Add(this.btnParopen);
+            this.flowLayoutPanel2.Controls.Add(this.btnParclose);
+            this.flowLayoutPanel2.Controls.Add(this.button36);
+            this.flowLayoutPanel2.Controls.Add(this.button39);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(314, 96);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(146, 339);
+            this.flowLayoutPanel2.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Firebrick;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(833, 431);
+            this.ClientSize = new System.Drawing.Size(1100, 443);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblShowOp);
-            this.Controls.Add(this.txtDisplay);
-            this.Controls.Add(this.button39);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button38);
             this.Controls.Add(this.button16);
-            this.Controls.Add(this.button37);
             this.Controls.Add(this.button12);
-            this.Controls.Add(this.button36);
-            this.Controls.Add(this.button23);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button34);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.button);
             this.Controls.Add(this.button18);
@@ -742,18 +779,15 @@ namespace Calculator
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button13);
-            this.Controls.Add(this.button19);
-            this.Controls.Add(this.button25);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button11);
-            this.Controls.Add(this.button22);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button21);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.BackSpace);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.flowLayoutPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -763,6 +797,9 @@ namespace Calculator
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -776,7 +813,6 @@ namespace Calculator
         private System.Windows.Forms.ToolStripMenuItem scientificToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem temperatureToolStripMenuItem;
         private System.Windows.Forms.Button BackSpace;
-        private System.Windows.Forms.TextBox txtDisplay;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button button;
@@ -795,18 +831,16 @@ namespace Calculator
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.Button button34;
         private System.Windows.Forms.Button button36;
-        private System.Windows.Forms.Button button37;
-        private System.Windows.Forms.Button button38;
+        private System.Windows.Forms.Button btnParclose;
+        private System.Windows.Forms.Button btnParopen;
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Label lblShowOp;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -818,6 +852,12 @@ namespace Calculator
         private System.Windows.Forms.RadioButton rbCeltoFah;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblShowOp;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TextBox txtDisplay;
+        private System.Windows.Forms.Button button37;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }
 

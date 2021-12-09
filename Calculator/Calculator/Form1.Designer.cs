@@ -80,9 +80,11 @@ namespace Calculator
             this.BackSpace = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.txtStep = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,7 +116,7 @@ namespace Calculator
             this.standardToolStripMenuItem.BackColor = System.Drawing.Color.Maroon;
             this.standardToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.standardToolStripMenuItem.Name = "standardToolStripMenuItem";
-            this.standardToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.standardToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.standardToolStripMenuItem.Text = "Standard";
             this.standardToolStripMenuItem.Click += new System.EventHandler(this.standardToolStripMenuItem_Click);
             // 
@@ -122,7 +124,7 @@ namespace Calculator
             // 
             this.scientificToolStripMenuItem.BackColor = System.Drawing.Color.Maroon;
             this.scientificToolStripMenuItem.Name = "scientificToolStripMenuItem";
-            this.scientificToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.scientificToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.scientificToolStripMenuItem.Text = "Scientific";
             this.scientificToolStripMenuItem.Click += new System.EventHandler(this.scientificToolStripMenuItem_Click);
             // 
@@ -130,7 +132,7 @@ namespace Calculator
             // 
             this.temperatureToolStripMenuItem.BackColor = System.Drawing.Color.Maroon;
             this.temperatureToolStripMenuItem.Name = "temperatureToolStripMenuItem";
-            this.temperatureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.temperatureToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.temperatureToolStripMenuItem.Text = "Temperature";
             this.temperatureToolStripMenuItem.Click += new System.EventHandler(this.temperatureToolStripMenuItem_Click);
             // 
@@ -424,7 +426,7 @@ namespace Calculator
             this.button23.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button23.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button23.Location = new System.Drawing.Point(76, 141);
+            this.button23.Location = new System.Drawing.Point(76, 72);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(67, 63);
             this.button23.TabIndex = 1;
@@ -452,7 +454,7 @@ namespace Calculator
             this.button34.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button34.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button34.Location = new System.Drawing.Point(3, 141);
+            this.button34.Location = new System.Drawing.Point(76, 141);
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(67, 63);
             this.button34.TabIndex = 1;
@@ -488,7 +490,7 @@ namespace Calculator
             this.btnParclose.TabIndex = 1;
             this.btnParclose.Text = ")";
             this.btnParclose.UseVisualStyleBackColor = false;
-            this.btnParclose.Click += new System.EventHandler(this.arithmetic_op);
+            this.btnParclose.Click += new System.EventHandler(this.paranthes2);
             // 
             // btnParopen
             // 
@@ -503,7 +505,7 @@ namespace Calculator
             this.btnParopen.TabIndex = 1;
             this.btnParopen.Text = "(";
             this.btnParopen.UseVisualStyleBackColor = false;
-            this.btnParopen.Click += new System.EventHandler(this.arithmetic_op);
+            this.btnParopen.Click += new System.EventHandler(this.paranthes1);
             // 
             // button39
             // 
@@ -526,7 +528,7 @@ namespace Calculator
             this.button19.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button19.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.Location = new System.Drawing.Point(76, 72);
+            this.button19.Location = new System.Drawing.Point(3, 141);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(67, 63);
             this.button19.TabIndex = 1;
@@ -693,11 +695,13 @@ namespace Calculator
             this.txtDisplay.BackColor = System.Drawing.Color.DarkSalmon;
             this.txtDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDisplay.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisplay.Location = new System.Drawing.Point(3, 16);
+            this.txtDisplay.Location = new System.Drawing.Point(10, 16);
+            this.txtDisplay.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.txtDisplay.Multiline = true;
             this.txtDisplay.Name = "txtDisplay";
+            this.txtDisplay.ReadOnly = true;
             this.txtDisplay.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDisplay.Size = new System.Drawing.Size(442, 28);
+            this.txtDisplay.Size = new System.Drawing.Size(435, 28);
             this.txtDisplay.TabIndex = 2;
             this.txtDisplay.Text = "0";
             // 
@@ -732,6 +736,7 @@ namespace Calculator
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtStep);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(466, 36);
             this.groupBox2.Name = "groupBox2";
@@ -745,9 +750,9 @@ namespace Calculator
             this.flowLayoutPanel2.Controls.Add(this.button25);
             this.flowLayoutPanel2.Controls.Add(this.button21);
             this.flowLayoutPanel2.Controls.Add(this.button22);
+            this.flowLayoutPanel2.Controls.Add(this.button23);
             this.flowLayoutPanel2.Controls.Add(this.button19);
             this.flowLayoutPanel2.Controls.Add(this.button34);
-            this.flowLayoutPanel2.Controls.Add(this.button23);
             this.flowLayoutPanel2.Controls.Add(this.btnParopen);
             this.flowLayoutPanel2.Controls.Add(this.btnParclose);
             this.flowLayoutPanel2.Controls.Add(this.button36);
@@ -756,6 +761,16 @@ namespace Calculator
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(146, 339);
             this.flowLayoutPanel2.TabIndex = 6;
+            // 
+            // txtStep
+            // 
+            this.txtStep.AllowDrop = true;
+            this.txtStep.AutoSize = true;
+            this.txtStep.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStep.Location = new System.Drawing.Point(7, 47);
+            this.txtStep.Name = "txtStep";
+            this.txtStep.Size = new System.Drawing.Size(0, 19);
+            this.txtStep.TabIndex = 0;
             // 
             // Form1
             // 
@@ -791,6 +806,7 @@ namespace Calculator
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
@@ -799,6 +815,8 @@ namespace Calculator
             this.groupBox1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -858,6 +876,7 @@ namespace Calculator
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Label txtStep;
     }
 }
 

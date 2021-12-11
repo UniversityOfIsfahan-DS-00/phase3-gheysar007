@@ -73,18 +73,20 @@ namespace Calculator
             this.rbCeltoFah = new System.Windows.Forms.RadioButton();
             this.button24 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblShowOp = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblShowOp = new System.Windows.Forms.Label();
             this.txtDisplay = new System.Windows.Forms.TextBox();
             this.button37 = new System.Windows.Forms.Button();
             this.BackSpace = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.txtStep = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -404,7 +406,7 @@ namespace Calculator
             this.button21.TabIndex = 1;
             this.button21.Text = "Log";
             this.button21.UseVisualStyleBackColor = false;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
+            this.button21.Click += new System.EventHandler(this.TanLogSinCos_click);
             // 
             // button22
             // 
@@ -418,7 +420,7 @@ namespace Calculator
             this.button22.TabIndex = 1;
             this.button22.Text = "Sin";
             this.button22.UseVisualStyleBackColor = false;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
+            this.button22.Click += new System.EventHandler(this.TanLogSinCos_click);
             // 
             // button23
             // 
@@ -432,7 +434,7 @@ namespace Calculator
             this.button23.TabIndex = 1;
             this.button23.Text = "Cos";
             this.button23.UseVisualStyleBackColor = false;
-            this.button23.Click += new System.EventHandler(this.button23_Click);
+            this.button23.Click += new System.EventHandler(this.TanLogSinCos_click);
             // 
             // button25
             // 
@@ -446,7 +448,7 @@ namespace Calculator
             this.button25.TabIndex = 1;
             this.button25.Text = "Tan";
             this.button25.UseVisualStyleBackColor = false;
-            this.button25.Click += new System.EventHandler(this.button25_Click);
+            this.button25.Click += new System.EventHandler(this.TanLogSinCos_click);
             // 
             // button34
             // 
@@ -672,14 +674,6 @@ namespace Calculator
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // lblShowOp
-            // 
-            this.lblShowOp.AutoSize = true;
-            this.lblShowOp.Location = new System.Drawing.Point(3, 0);
-            this.lblShowOp.Name = "lblShowOp";
-            this.lblShowOp.Size = new System.Drawing.Size(0, 13);
-            this.lblShowOp.TabIndex = 3;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.DarkSalmon;
@@ -689,6 +683,14 @@ namespace Calculator
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(448, 54);
             this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // lblShowOp
+            // 
+            this.lblShowOp.AutoSize = true;
+            this.lblShowOp.Location = new System.Drawing.Point(3, 0);
+            this.lblShowOp.Name = "lblShowOp";
+            this.lblShowOp.Size = new System.Drawing.Size(0, 13);
+            this.lblShowOp.TabIndex = 3;
             // 
             // txtDisplay
             // 
@@ -736,14 +738,36 @@ namespace Calculator
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtStep);
+            this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.groupBox2.Location = new System.Drawing.Point(466, 36);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(277, 399);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Step by step solution";
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.Color.Firebrick;
+            this.panel1.Controls.Add(this.txtStep);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 29);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(271, 367);
+            this.panel1.TabIndex = 1;
+            // 
+            // txtStep
+            // 
+            this.txtStep.AllowDrop = true;
+            this.txtStep.AutoSize = true;
+            this.txtStep.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStep.Location = new System.Drawing.Point(7, 15);
+            this.txtStep.Name = "txtStep";
+            this.txtStep.Size = new System.Drawing.Size(0, 19);
+            this.txtStep.TabIndex = 0;
             // 
             // flowLayoutPanel2
             // 
@@ -761,16 +785,6 @@ namespace Calculator
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(146, 339);
             this.flowLayoutPanel2.TabIndex = 6;
-            // 
-            // txtStep
-            // 
-            this.txtStep.AllowDrop = true;
-            this.txtStep.AutoSize = true;
-            this.txtStep.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStep.Location = new System.Drawing.Point(7, 47);
-            this.txtStep.Name = "txtStep";
-            this.txtStep.Size = new System.Drawing.Size(0, 19);
-            this.txtStep.TabIndex = 0;
             // 
             // Form1
             // 
@@ -816,7 +830,8 @@ namespace Calculator
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -870,13 +885,14 @@ namespace Calculator
         private System.Windows.Forms.RadioButton rbCeltoFah;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label lblShowOp;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox txtDisplay;
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label txtStep;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblShowOp;
     }
 }
 

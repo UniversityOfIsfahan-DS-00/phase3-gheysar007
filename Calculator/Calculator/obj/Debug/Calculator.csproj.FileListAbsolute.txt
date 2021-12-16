@@ -8,3 +8,10 @@ C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator
 C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
 C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator\obj\Debug\Calculator.exe
 C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator\obj\Debug\Calculator.pdb
+C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator\bin\Debug\Microsoft.Msagl.dll
+C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator\bin\Debug\Microsoft.Msagl.Drawing.dll
+C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator\bin\Debug\Microsoft.Msagl.GraphViewerGdi.dll
+C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator\bin\Debug\Microsoft.Msagl.xml
+C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator\bin\Debug\Microsoft.Msagl.Drawing.xml
+C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator\bin\Debug\Microsoft.Msagl.GraphViewerGdi.xml
+C:\Users\SABA\Desktop\Term 3\Programming\phase3-gheysar007\Calculator\Calculator\obj\Debug\Calculator.csproj.CopyComplete

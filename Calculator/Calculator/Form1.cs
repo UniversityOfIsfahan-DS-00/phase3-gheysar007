@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Calculator.GFG;
 
 namespace Calculator
 {
     public partial class Form1 : Form
     {
         bool enter_value = false;
+        string treeString = "";
 
         float iCelsius, iFahrenheit, iKevin;
         char iOperation;
@@ -21,7 +19,6 @@ namespace Calculator
         bool containdot = false;
         bool arithmeticafterdot = false;
 
-        short maxstack = 0;
         LinkedStack Stack = new LinkedStack();
 
         public Form1()
@@ -33,8 +30,62 @@ namespace Calculator
         {
             txtStep.Text = "";
             txtDisplay.Text = "0";
-            lblShowOp.Text = "";
             isnumber = false;
+        }
+
+        void iterate(nptr root, TreeNode node)
+        {
+            TreeNode leftnode = new TreeNode();
+            TreeNode rightnode = new TreeNode();
+            if (root == null)
+            {
+                if (root == null)
+                {
+                    return;
+                }
+                else
+                {
+                    rightnode = new TreeNode(root.data.ToString());
+                }
+                leftnode = new TreeNode(null);
+            }
+            else
+            {
+                if (root == null)
+                {
+                    rightnode = new TreeNode(null);
+                }
+                else
+                {
+                    rightnode = new TreeNode(root.data.ToString());
+                }
+                leftnode = new TreeNode(root.data.ToString());
+            }
+            TreeNode treenode = new TreeNode(root.data);
+            iterate(root.left,treenode);
+            //TreeNode[] array = new TreeNode[] { leftnode, rightnode };
+            //TreeNode treeNode = new TreeNode(root.data.ToString(), array);
+            node.Nodes.Add(treenode);
+            iterate(root.right,treenode);
+        }
+
+        private void graphToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Width = 379;
+            txtDisplay.Width = 286;
+            flowLayoutPanel2.Visible = false;
+            groupBox2.Visible = false;
+            tree.Location = new Point(12, 36);
+            flowLayoutPanel1.Visible = false;
+            tree.Visible = true;
+            groupBox1.Visible = false;
+
+            treeView1.Nodes.Clear();
+            nptr root = build(treeString);
+            TreeNode rootnode = new TreeNode("TREE");
+            iterate(root, rootnode);
+            treeView1.Nodes.Add(rootnode);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -45,6 +96,8 @@ namespace Calculator
             flowLayoutPanel2.Visible = false;
             groupBox2.Visible = true;
             groupBox2.Location = new Point(304, 35);
+            tree.Visible = false;
+
         }
 
         private void standardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,6 +111,8 @@ namespace Calculator
             groupBox2.Visible = true;
             groupBox2.Location = new Point(304, 35);
             groupBox1.Visible = false;
+            tree.Visible = false;
+
         }
 
         private void scientificToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,6 +126,8 @@ namespace Calculator
             groupBox2.Visible = true;
             groupBox2.Location = new Point(466, 36);
             groupBox1.Visible = false;
+            tree.Visible = false;
+
         }
 
         private void temperatureToolStripMenuItem_Click(object sender, EventArgs e)
@@ -81,6 +138,7 @@ namespace Calculator
             flowLayoutPanel2.Visible = false;
             groupBox1.Location = new Point(12, 35);
             groupBox2.Visible = false;
+            tree.Visible = false;
             groupBox1.Visible = true;
         }
 
@@ -116,7 +174,6 @@ namespace Calculator
         {
             txtDisplay.Text = "0";
             txtStep.Text = "";
-            lblShowOp.Text = "";
             isnumber = false;
             containdot = false;
 
@@ -189,7 +246,7 @@ namespace Calculator
         {
             doublyLinkedList<string>.node<string> node = list.gethead().getNext();
             string dashnequal = "\n=";
-            string printform= "";
+            string printform = "";
             while (node != list.gettail())
             {
                 printform += node.getData();
@@ -204,7 +261,7 @@ namespace Calculator
             }
         }
 
-            
+
         private void StepByStepSoution(string result)
         {
             if (txtStep.Text == "Syntax Error")
@@ -216,10 +273,6 @@ namespace Calculator
             doublyLinkedList<string> operatelist = new doublyLinkedList<string>();
             for (int i = 0; i < result.Length; i++)
             {
-                if (result[i] == '(')
-                {
-                    maxstack++;
-                }
                 if ((!char.IsNumber(result[i]) && result[i] != '.') || (char.IsNumber(result[i]) && (result[i - 1] == '+' || result[i - 1] == '-'
                     || result[i - 1] == '^' || result[i - 1] == '÷' || result[i - 1] == '×' || result[i - 1] == '(' || result[i - 1] == ')')))
                 {
@@ -450,7 +503,6 @@ namespace Calculator
 
         private void btnequal_click(object sender, EventArgs e)
         {
-            lblShowOp.Text = "";
             for (int i = 0; i < 2; i++)
                 switch (txtDisplay.Text[txtDisplay.Text.Length - 1])
                 {
@@ -475,19 +527,60 @@ namespace Calculator
             txtStep.Text = txtDisplay.Text;
             txtDisplay.Text = "0";
             isnumber = false;
-            StepByStepSoution("(" + txtStep.Text + ")");
+
+            string sqrt = "";
+            if (txtStep.Text.Contains("√"))
+            {
+                for (int i = 0; i < txtStep.Text.Length; i++)
+                {
+                    if (txtStep.Text[i] == '√')
+                    {
+                        for (int j = i + 1; char.IsDigit(txtStep.Text[j]) || txtStep.Text[j] == '.'; j++)
+                        {
+                            sqrt += txtStep.Text[j];
+                        }
+                        double temp = Math.Sqrt(Convert.ToDouble(sqrt));
+                        sqrt = "";
+                        for (int k = 0; k < txtStep.Text.Length; k++)
+                        {
+
+                        }
+
+                    }
+                }
+            }
+
+            treeString = "(" + txtStep.Text + ")";
+            treeString = treeString.Replace('×', '*');
+            treeString = treeString.Replace('÷', '/');
+
+            switch (txtStep.Text)
+            {
+                //case string a when a.Contains("Sin"):
+                //    break;
+                //case string a when a.Contains("Cos"):
+                //    break;
+                //case string a when a.Contains("Tan"):
+                //    break;
+                //case string a when a.Contains("Log"):
+                //    break;
+                default:
+                    StepByStepSoution("(" + txtStep.Text + ")");
+                    break;
+            }
+
             while (Stack.size() > 0)
             {
                 Stack.pop();
             }
-            maxstack = 0;
+
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
             if (txtDisplay.Text == "0")
                 txtDisplay.Text = "3.14159";
-            else if(!isnumber)
+            else if (!isnumber)
                 txtDisplay.Text += "3.14159";
 
             arithmeticafterdot = true;
@@ -498,28 +591,10 @@ namespace Calculator
         private void button34_Click(object sender, EventArgs e)
         {
             double sqrt = double.Parse(txtDisplay.Text);
-            lblShowOp.Text = Convert.ToString("√" + "(" + txtDisplay.Text + ")");
+            kk.Text = Convert.ToString("√" + "(" + txtDisplay.Text + ")");
             sqrt = Math.Sqrt(sqrt);
             txtStep.Text = Convert.ToString(sqrt);
             txtDisplay.Text = "";
-        }
-
-        private void button22_Click(object sender, EventArgs e)
-        {
-            double sin = double.Parse(txtDisplay.Text);
-            lblShowOp.Text = Convert.ToString("Sin" + "(" + txtDisplay.Text + ")");
-            sin = Math.Sin(sin);
-            txtDisplay.Text = "";
-            txtStep.Text = Convert.ToString(sin);
-        }
-
-        private void button23_Click(object sender, EventArgs e)
-        {
-            double Cos = double.Parse(txtDisplay.Text);
-            lblShowOp.Text = Convert.ToString("Cos" + "(" + txtDisplay.Text + ")");
-            Cos = Math.Cos(Cos);
-            txtDisplay.Text = "";
-            txtStep.Text = Convert.ToString(Cos);
         }
 
         private void rbCeltoFah_CheckedChanged(object sender, EventArgs e)
@@ -597,6 +672,7 @@ namespace Calculator
             }
             isnumber = true;
         }
+
 
         private void TanLogSinCos_click(object sender, EventArgs e)
         {

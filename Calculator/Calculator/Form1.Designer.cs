@@ -34,6 +34,7 @@ namespace Calculator
             this.standardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.scientificToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.temperatureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
             this.button = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
@@ -73,19 +74,24 @@ namespace Calculator
             this.rbCeltoFah = new System.Windows.Forms.RadioButton();
             this.button24 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblShowOp = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.kk = new System.Windows.Forms.Label();
             this.txtDisplay = new System.Windows.Forms.TextBox();
             this.button37 = new System.Windows.Forms.Button();
             this.BackSpace = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.txtStep = new System.Windows.Forms.Label();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.tree = new System.Windows.Forms.GroupBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.tree.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -97,7 +103,7 @@ namespace Calculator
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1100, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1370, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -106,7 +112,8 @@ namespace Calculator
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.standardToolStripMenuItem,
             this.scientificToolStripMenuItem,
-            this.temperatureToolStripMenuItem});
+            this.temperatureToolStripMenuItem,
+            this.graphToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -135,6 +142,14 @@ namespace Calculator
             this.temperatureToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.temperatureToolStripMenuItem.Text = "Temperature";
             this.temperatureToolStripMenuItem.Click += new System.EventHandler(this.temperatureToolStripMenuItem_Click);
+            // 
+            // graphToolStripMenuItem
+            // 
+            this.graphToolStripMenuItem.BackColor = System.Drawing.Color.Maroon;
+            this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
+            this.graphToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.graphToolStripMenuItem.Text = "Graph";
+            this.graphToolStripMenuItem.Click += new System.EventHandler(this.graphToolStripMenuItem_Click);
             // 
             // button2
             // 
@@ -404,7 +419,7 @@ namespace Calculator
             this.button21.TabIndex = 1;
             this.button21.Text = "Log";
             this.button21.UseVisualStyleBackColor = false;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
+            this.button21.Click += new System.EventHandler(this.TanLogSinCos_click);
             // 
             // button22
             // 
@@ -418,7 +433,7 @@ namespace Calculator
             this.button22.TabIndex = 1;
             this.button22.Text = "Sin";
             this.button22.UseVisualStyleBackColor = false;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
+            this.button22.Click += new System.EventHandler(this.TanLogSinCos_click);
             // 
             // button23
             // 
@@ -432,7 +447,7 @@ namespace Calculator
             this.button23.TabIndex = 1;
             this.button23.Text = "Cos";
             this.button23.UseVisualStyleBackColor = false;
-            this.button23.Click += new System.EventHandler(this.button23_Click);
+            this.button23.Click += new System.EventHandler(this.TanLogSinCos_click);
             // 
             // button25
             // 
@@ -446,7 +461,7 @@ namespace Calculator
             this.button25.TabIndex = 1;
             this.button25.Text = "Tan";
             this.button25.UseVisualStyleBackColor = false;
-            this.button25.Click += new System.EventHandler(this.button25_Click);
+            this.button25.Click += new System.EventHandler(this.TanLogSinCos_click);
             // 
             // button34
             // 
@@ -672,23 +687,23 @@ namespace Calculator
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // lblShowOp
-            // 
-            this.lblShowOp.AutoSize = true;
-            this.lblShowOp.Location = new System.Drawing.Point(3, 0);
-            this.lblShowOp.Name = "lblShowOp";
-            this.lblShowOp.Size = new System.Drawing.Size(0, 13);
-            this.lblShowOp.TabIndex = 3;
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.DarkSalmon;
-            this.flowLayoutPanel1.Controls.Add(this.lblShowOp);
+            this.flowLayoutPanel1.Controls.Add(this.kk);
             this.flowLayoutPanel1.Controls.Add(this.txtDisplay);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 36);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(448, 54);
             this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // kk
+            // 
+            this.kk.AutoSize = true;
+            this.kk.Location = new System.Drawing.Point(3, 0);
+            this.kk.Name = "kk";
+            this.kk.Size = new System.Drawing.Size(0, 13);
+            this.kk.TabIndex = 3;
             // 
             // txtDisplay
             // 
@@ -736,14 +751,36 @@ namespace Calculator
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.txtStep);
+            this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.groupBox2.Location = new System.Drawing.Point(466, 36);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(277, 399);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Step by step solution";
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.Color.Firebrick;
+            this.panel1.Controls.Add(this.txtStep);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 29);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(271, 367);
+            this.panel1.TabIndex = 1;
+            // 
+            // txtStep
+            // 
+            this.txtStep.AllowDrop = true;
+            this.txtStep.AutoSize = true;
+            this.txtStep.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStep.Location = new System.Drawing.Point(7, 15);
+            this.txtStep.Name = "txtStep";
+            this.txtStep.Size = new System.Drawing.Size(0, 19);
+            this.txtStep.TabIndex = 0;
             // 
             // flowLayoutPanel2
             // 
@@ -762,15 +799,24 @@ namespace Calculator
             this.flowLayoutPanel2.Size = new System.Drawing.Size(146, 339);
             this.flowLayoutPanel2.TabIndex = 6;
             // 
-            // txtStep
+            // tree
             // 
-            this.txtStep.AllowDrop = true;
-            this.txtStep.AutoSize = true;
-            this.txtStep.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStep.Location = new System.Drawing.Point(7, 47);
-            this.txtStep.Name = "txtStep";
-            this.txtStep.Size = new System.Drawing.Size(0, 19);
-            this.txtStep.TabIndex = 0;
+            this.tree.Controls.Add(this.treeView1);
+            this.tree.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tree.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.tree.Location = new System.Drawing.Point(1099, 39);
+            this.tree.Name = "tree";
+            this.tree.Size = new System.Drawing.Size(340, 399);
+            this.tree.TabIndex = 7;
+            this.tree.TabStop = false;
+            this.tree.Text = "Tree structure";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(6, 32);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(328, 361);
+            this.treeView1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -778,7 +824,8 @@ namespace Calculator
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Firebrick;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1100, 443);
+            this.ClientSize = new System.Drawing.Size(1370, 443);
+            this.Controls.Add(this.tree);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.groupBox1);
@@ -816,8 +863,10 @@ namespace Calculator
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
+            this.tree.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -870,13 +919,17 @@ namespace Calculator
         private System.Windows.Forms.RadioButton rbCeltoFah;
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label lblShowOp;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TextBox txtDisplay;
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label txtStep;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label kk;
+        private System.Windows.Forms.ToolStripMenuItem graphToolStripMenuItem;
+        private System.Windows.Forms.GroupBox tree;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 

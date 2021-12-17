@@ -540,14 +540,12 @@ namespace Calculator
                         string temp = Math.Sqrt(Convert.ToDouble(sqrt)).ToString();
                         result = result.Replace($"√{sqrt}", temp);
                         txtStep.Text += $"\n={result}";
+                        
                     }
                 }
             }
-            int lengthofStepAfterSqrt = txtStep.Text.Length;
+            int lengthofStepAfterSqrt = result.Length;
 
-            treeString = "(" + txtStep.Text + ")";
-            treeString = treeString.Replace('×', '*');
-            treeString = treeString.Replace('÷', '/');
 
             string a = txtStep.Text;
 
@@ -561,6 +559,9 @@ namespace Calculator
 
             StepByStepSoution("(" + result + ")");
 
+            treeString = "(" + result + ")";
+            treeString = treeString.Replace('×', '*');
+            treeString = treeString.Replace('÷', '/');
         }
 
         string calc_SinCosTanLog(int length, string stepLastLine)
@@ -568,7 +569,7 @@ namespace Calculator
             string result = stepLastLine;
             for (int i = 0; i < length; i++)
             {
-                if (txtStep.Text[i] == 'S')
+                if (result[i] == 'S')
                 {
                     int j;
                     string num = "";
@@ -579,7 +580,7 @@ namespace Calculator
                     string temp = Math.Sin(Convert.ToDouble(num)).ToString();
                     result = result.Replace($"Sin({num})", $"({temp})");
                 }
-                if (txtStep.Text[i] == 'C')
+                if (result[i] == 'C')
                 {
                     int j;
                     string num = "";
@@ -590,7 +591,7 @@ namespace Calculator
                     string temp = Math.Cos(Convert.ToDouble(num)).ToString();
                     result = result.Replace($"Cos({num})", $"({temp})");
                 }
-                if (txtStep.Text[i] == 'T')
+                if (result[i] == 'T')
                 {
                     int j;
                     string num = "";
@@ -601,7 +602,7 @@ namespace Calculator
                     string temp = Math.Tan(Convert.ToDouble(num)).ToString();
                     result = result.Replace($"Tan({num})", $"({temp})");
                 }
-                if (txtStep.Text[i] == 'L')
+                if (result[i] == 'L')
                 {
                     int j;
                     string num = "";

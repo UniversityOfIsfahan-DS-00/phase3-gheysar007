@@ -245,6 +245,7 @@ namespace Calculator
             doublyLinkedList<string>.node<string> node = list.gethead().getNext();
             string dashnequal = "\n=";
             string printform = "";
+            //o(n) onced counted
             while (node != list.gettail())
             {
                 printform += node.getData();
@@ -269,6 +270,7 @@ namespace Calculator
 
             bool allowtoprint = false;
             doublyLinkedList<string> operatelist = new doublyLinkedList<string>();
+            //o(n)
             for (int i = 0; i < result.Length; i++)
             {
                 if ((!char.IsNumber(result[i]) && result[i] != '.') || (char.IsNumber(result[i]) && (result[i - 1] == '+' || result[i - 1] == '-'
@@ -286,6 +288,7 @@ namespace Calculator
             doublyLinkedList<string>.node<string> head = operatelist.gethead();
             doublyLinkedList<string>.node<string> tail = operatelist.gettail();
             bool isException = false;
+            //o(n)
             while (operatelist.gethead() != operatelist.gettail())
             {
                 try
@@ -305,6 +308,7 @@ namespace Calculator
                     }
                     tail = node;
                     node = head;
+                    //o(n)
                     while (node.getNext() != tail)
                     {
                         node = node.getNext();
@@ -317,12 +321,14 @@ namespace Calculator
 
                         }
                     }
+                    //o(n)
                     if (allowtoprint)
                     {
                         Print(operatelist);
                         allowtoprint = false;
                     }
                     node = head.getNext();
+                    //o(n)
                     while (node != tail)
                     {
                         if (node.getData() == "+")
@@ -387,6 +393,7 @@ namespace Calculator
                     }
 
                     node = head;
+                    //o(n)
                     while (node.getNext() != tail)
                     {
                         node = node.getNext();
@@ -410,6 +417,7 @@ namespace Calculator
                         allowtoprint = false;
                     }
                     node = head;
+                    //o(n)
                     while (node.getNext() != tail)
                     {
                         node = node.getNext();
@@ -439,6 +447,7 @@ namespace Calculator
                         }
                     }
                     node = head;
+                    //o(n)
                     while (node.getNext() != tail)
                     {
                         node = node.getNext();
@@ -462,6 +471,7 @@ namespace Calculator
                         allowtoprint = false;
                     }
                     node = head.getNext();
+                    //o(n)
                     while (node.getNext() != tail)
                     {
                         node = node.getNext();
@@ -488,6 +498,7 @@ namespace Calculator
                 string finalRes = "";
                 node = operatelist.gethead();
                 finalRes += node.getData();
+                //o(n)
                 while (node != operatelist.gettail())
                 {
                     finalRes += node.getNext().getData();
@@ -526,6 +537,7 @@ namespace Calculator
             isnumber = false;
             string sqrt = "";
             string result = txtStep.Text;
+            //o(n)
             if (txtStep.Text.Contains("√"))
             {
                 for (int i = 0; i < txtStep.Text.Length; i++)
@@ -536,6 +548,7 @@ namespace Calculator
                         for (j = i + 1; (j < txtStep.Text.Length) && (char.IsDigit(txtStep.Text[j]) || txtStep.Text[j] == '.'); j++)
                         {
                             sqrt += txtStep.Text[j];
+                            i++;
                         }
                         string temp = Math.Sqrt(Convert.ToDouble(sqrt)).ToString();
                         result = result.Replace($"√{sqrt}", temp);
@@ -548,15 +561,16 @@ namespace Calculator
 
 
             string a = txtStep.Text;
-
+            //o(n/2)
             while (Stack.size() > 0)
             {
                 Stack.pop();
             }
-
+            //o(n)
             if (a.Contains("Sin") || a.Contains("Cos") || a.Contains("Tan") || a.Contains("Log"))
                 result = calc_SinCosTanLog(lengthofStepAfterSqrt, result);
 
+            //o(n^2)
             StepByStepSoution("(" + result + ")");
 
             treeString = "(" + result + ")";
@@ -576,6 +590,7 @@ namespace Calculator
                     for (j = i + 4; stepLastLine[j] != ')'; j++)
                     {
                         num += stepLastLine[j];
+                        i++;
                     }
                     string temp = Math.Sin(Convert.ToDouble(num)).ToString();
                     result = result.Replace($"Sin({num})", $"({temp})");
@@ -587,6 +602,7 @@ namespace Calculator
                     for (j = i + 4; stepLastLine[j] != ')'; j++)
                     {
                         num += stepLastLine[j];
+                        i++;
                     }
                     string temp = Math.Cos(Convert.ToDouble(num)).ToString();
                     result = result.Replace($"Cos({num})", $"({temp})");
@@ -598,6 +614,7 @@ namespace Calculator
                     for (j = i + 4; stepLastLine[j] != ')'; j++)
                     {
                         num += stepLastLine[j];
+                        i++;
                     }
                     string temp = Math.Tan(Convert.ToDouble(num)).ToString();
                     result = result.Replace($"Tan({num})", $"({temp})");
@@ -609,6 +626,7 @@ namespace Calculator
                     for (j = i + 4; stepLastLine[j] != ')'; j++)
                     {
                         num += stepLastLine[j];
+                        i++;
                     }
                     string temp = Math.Log10(Convert.ToDouble(num)).ToString();
                     result = result.Replace($"Log({num})", $"({temp})");

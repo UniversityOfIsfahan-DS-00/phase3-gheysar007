@@ -62,11 +62,9 @@ namespace Calculator
                 leftnode = new TreeNode(root.data.ToString());
             }
             TreeNode treenode = new TreeNode(root.data);
-            iterate(root.left,treenode);
-            //TreeNode[] array = new TreeNode[] { leftnode, rightnode };
-            //TreeNode treeNode = new TreeNode(root.data.ToString(), array);
+            iterate(root.left, treenode);
             node.Nodes.Add(treenode);
-            iterate(root.right,treenode);
+            iterate(root.right, treenode);
         }
 
         private void graphToolStripMenuItem_Click(object sender, EventArgs e)
@@ -503,18 +501,17 @@ namespace Calculator
 
         private void btnequal_click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 2; i++)
-                switch (txtDisplay.Text[txtDisplay.Text.Length - 1])
-                {
-                    case '+':
-                    case '-':
-                    case '×':
-                    case '÷':
-                    case '.':
-                    case '^':
-                        txtDisplay.Text = "Syntax Error";
-                        break;
-                }
+            switch (txtDisplay.Text[txtDisplay.Text.Length - 1])
+            {
+                case '+':
+                case '-':
+                case '×':
+                case '÷':
+                case '.':
+                case '^':
+                    txtDisplay.Text = "Syntax Error";
+                    break;
+            }
             if (!Stack.isEmpty())
             {
                 int sizeofstack = Stack.size();
@@ -527,53 +524,98 @@ namespace Calculator
             txtStep.Text = txtDisplay.Text;
             txtDisplay.Text = "0";
             isnumber = false;
-
             string sqrt = "";
+            string result = txtStep.Text;
             if (txtStep.Text.Contains("√"))
             {
                 for (int i = 0; i < txtStep.Text.Length; i++)
                 {
                     if (txtStep.Text[i] == '√')
                     {
-                        for (int j = i + 1; char.IsDigit(txtStep.Text[j]) || txtStep.Text[j] == '.'; j++)
+                        int j;
+                        for (j = i + 1; (j < txtStep.Text.Length) && (char.IsDigit(txtStep.Text[j]) || txtStep.Text[j] == '.'); j++)
                         {
                             sqrt += txtStep.Text[j];
                         }
-                        double temp = Math.Sqrt(Convert.ToDouble(sqrt));
-                        sqrt = "";
-                        for (int k = 0; k < txtStep.Text.Length; k++)
-                        {
-
-                        }
-
+                        string temp = Math.Sqrt(Convert.ToDouble(sqrt)).ToString();
+                        result = result.Replace($"√{sqrt}", temp);
+                        txtStep.Text += $"\n={result}";
                     }
                 }
             }
+            int lengthofStepAfterSqrt = txtStep.Text.Length;
 
             treeString = "(" + txtStep.Text + ")";
             treeString = treeString.Replace('×', '*');
             treeString = treeString.Replace('÷', '/');
 
-            switch (txtStep.Text)
-            {
-                //case string a when a.Contains("Sin"):
-                //    break;
-                //case string a when a.Contains("Cos"):
-                //    break;
-                //case string a when a.Contains("Tan"):
-                //    break;
-                //case string a when a.Contains("Log"):
-                //    break;
-                default:
-                    StepByStepSoution("(" + txtStep.Text + ")");
-                    break;
-            }
+            string a = txtStep.Text;
 
             while (Stack.size() > 0)
             {
                 Stack.pop();
             }
 
+            if (a.Contains("Sin") || a.Contains("Cos") || a.Contains("Tan") || a.Contains("Log"))
+                result = calc_SinCosTanLog(lengthofStepAfterSqrt, result);
+
+            StepByStepSoution("(" + result + ")");
+
+        }
+
+        string calc_SinCosTanLog(int length, string stepLastLine)
+        {
+            string result = stepLastLine;
+            for (int i = 0; i < length; i++)
+            {
+                if (txtStep.Text[i] == 'S')
+                {
+                    int j;
+                    string num = "";
+                    for (j = i + 4; stepLastLine[j] != ')'; j++)
+                    {
+                        num += stepLastLine[j];
+                    }
+                    string temp = Math.Sin(Convert.ToDouble(num)).ToString();
+                    result = result.Replace($"Sin({num})", $"({temp})");
+                }
+                if (txtStep.Text[i] == 'C')
+                {
+                    int j;
+                    string num = "";
+                    for (j = i + 4; stepLastLine[j] != ')'; j++)
+                    {
+                        num += stepLastLine[j];
+                    }
+                    string temp = Math.Cos(Convert.ToDouble(num)).ToString();
+                    result = result.Replace($"Cos({num})", $"({temp})");
+                }
+                if (txtStep.Text[i] == 'T')
+                {
+                    int j;
+                    string num = "";
+                    for (j = i + 4; stepLastLine[j] != ')'; j++)
+                    {
+                        num += stepLastLine[j];
+                    }
+                    string temp = Math.Tan(Convert.ToDouble(num)).ToString();
+                    result = result.Replace($"Tan({num})", $"({temp})");
+                }
+                if (txtStep.Text[i] == 'L')
+                {
+                    int j;
+                    string num = "";
+                    for (j = i + 4; stepLastLine[j] != ')'; j++)
+                    {
+                        num += stepLastLine[j];
+                    }
+                    string temp = Math.Log10(Convert.ToDouble(num)).ToString();
+                    result = result.Replace($"Log({num})", $"({temp})");
+                }
+            }
+
+            txtStep.Text += $"\n={result}";
+            return result;
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -584,17 +626,18 @@ namespace Calculator
                 txtDisplay.Text += "3.14159";
 
             arithmeticafterdot = true;
-            isnumber = true;
         }
 
 
         private void button34_Click(object sender, EventArgs e)
         {
-            double sqrt = double.Parse(txtDisplay.Text);
-            kk.Text = Convert.ToString("√" + "(" + txtDisplay.Text + ")");
-            sqrt = Math.Sqrt(sqrt);
-            txtStep.Text = Convert.ToString(sqrt);
-            txtDisplay.Text = "";
+            if (txtDisplay.Text == "0")
+                txtDisplay.Text = "√";
+            else if (!isnumber)
+                txtDisplay.Text += "√";
+
+            arithmeticafterdot = true;
+            isnumber = true;
         }
 
         private void rbCeltoFah_CheckedChanged(object sender, EventArgs e)
